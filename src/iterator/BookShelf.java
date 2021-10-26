@@ -1,26 +1,29 @@
 package iterator;
 
+import java.util.ArrayList;
+
 public class BookShelf implements Aggregate{
 
-    private Book[] books;
+    private ArrayList<Book> books;
 
-    private int size;
-
-    public BookShelf(int size){
-        this.size = size;
-        this.books = new Book[size];
+    public BookShelf(){
+        books = new ArrayList<>();
     }
 
-    public int getSize() {
-        return size;
+    public void addBook(Book book){
+        books.add(book);
     }
 
     public Book getBookAt(int index){
-        return this.books[index];
+        return this.books.get(index);
     }
 
     @Override
     public Iterator iterator() {
-        return null;
+        return new BookShelfIterator(this);
+    }
+
+    public int getSize() {
+        return this.books.size();
     }
 }
