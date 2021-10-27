@@ -3,18 +3,18 @@ classDiagram
 
 class Factory{
 	<<abstract>>
-	+createProduct(String owner)*Product
+	+createProduct(String owner)*Prototype
 	+registerProduct(product)*void
-	+create(String owner)Product
+	+create(String owner)Prototype
 }
 
-class Product{
+class Prototype{
 	<<abstract>>
 	+use()*void
 }
 
 class IdCardFactory{
-	+createProduct(String owner)Product
+	+createProduct(String owner)Prototype
 	+registerProduct(product)void
 }
 
@@ -23,8 +23,8 @@ class IdCard{
 }
 
 Factory <|-- IdCardFactory
-Factory o--> Product
-Product <|-- IdCard
+Factory o--> Prototype
+Prototype <|-- IdCard
 IdCardFactory o--> IdCard
 ```
 
